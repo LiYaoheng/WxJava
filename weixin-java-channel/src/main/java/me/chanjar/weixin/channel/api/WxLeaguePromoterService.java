@@ -12,46 +12,46 @@ import me.chanjar.weixin.common.error.WxErrorException;
  */
 public interface WxLeaguePromoterService {
 
-    /**
-     * 新增达人
-     *
-     * @param finderId 视频号finder_id，待废除
-     * @return 结果
-     * @deprecated 使用 {@link #addPromoterV2(String)}
-     */
-    @Deprecated
-    WxChannelBaseResponse addPromoter(String finderId) throws WxErrorException;
+  /**
+   * 新增达人
+   *
+   * @param finderId 视频号finder_id，待废除
+   * @return 结果
+   * @deprecated 使用 {@link #addPromoterV2(String)}
+   */
+  @Deprecated
+  WxChannelBaseResponse addPromoter(String finderId) throws WxErrorException;
 
-    /**
-     * 编辑达人
-     *
-     * @param finderId 视频号finder_id，待废除
-     * @param type     操作 1取消邀请 2结束合作
-     * @return 结果
-     * @deprecated 使用 {@link #updatePromoterV2(String, int)}
-     */
-    @Deprecated
-    WxChannelBaseResponse updatePromoter(String finderId, int type) throws WxErrorException;
+  /**
+   * 编辑达人
+   *
+   * @param finderId 视频号finder_id，待废除
+   * @param type     操作 1取消邀请 2结束合作
+   * @return 结果
+   * @deprecated 使用 {@link #updatePromoterV2(String, int)}
+   */
+  @Deprecated
+  WxChannelBaseResponse updatePromoter(String finderId, int type) throws WxErrorException;
 
-    /**
-     * 删除达人
-     *
-     * @param finderId 视频号finder_id，待废除
-     * @return 结果
-     * @deprecated 使用 {@link #deletePromoterV2(String)}
-     */
-    @Deprecated
-    WxChannelBaseResponse deletePromoter(String finderId) throws WxErrorException;
+  /**
+   * 删除达人
+   *
+   * @param finderId 视频号finder_id，待废除
+   * @return 结果
+   * @deprecated 使用 {@link #deletePromoterV2(String)}
+   */
+  @Deprecated
+  WxChannelBaseResponse deletePromoter(String finderId) throws WxErrorException;
 
-    /**
-     * 获取达人详情信息
-     *
-     * @param finderId 视频号finder_id，待废除
-     * @return 结果
-     * @deprecated 使用 {@link #getPromoterInfoV2(String)}
-     */
-    @Deprecated
-    PromoterInfoResponse getPromoterInfo(String finderId) throws WxErrorException;
+  /**
+   * 获取达人详情信息
+   *
+   * @param finderId 视频号finder_id，待废除
+   * @return 结果
+   * @deprecated 使用 {@link #getPromoterInfoV2(String)}
+   */
+  @Deprecated
+  PromoterInfoResponse getPromoterInfo(String finderId) throws WxErrorException;
 
   /**
    * 新增达人
@@ -65,7 +65,7 @@ public interface WxLeaguePromoterService {
    * 编辑达人
    *
    * @param promoterId 达人带货id
-   * @param type     操作 1取消邀请 2结束合作
+   * @param type       操作 1取消邀请 2结束合作
    * @return 结果
    */
   WxChannelBaseResponse updatePromoterV2(String promoterId, int type) throws WxErrorException;

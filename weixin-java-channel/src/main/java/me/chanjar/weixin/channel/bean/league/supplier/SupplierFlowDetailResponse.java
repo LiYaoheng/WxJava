@@ -17,7 +17,9 @@ import me.chanjar.weixin.channel.bean.base.WxChannelBaseResponse;
 public class SupplierFlowDetailResponse extends WxChannelBaseResponse {
 
   private static final long serialVersionUID = -3962482396458765234L;
-  /** 流水信息 */
+  /**
+   * 流水信息
+   */
   @JsonProperty("funds_flow")
   private FundsFlowInfo fundsFlow;
 }

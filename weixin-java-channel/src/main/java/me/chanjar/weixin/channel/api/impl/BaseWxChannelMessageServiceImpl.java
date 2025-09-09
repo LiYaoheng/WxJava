@@ -1,6 +1,5 @@
 package me.chanjar.weixin.channel.api.impl;
 
-import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.channel.api.BaseWxChannelMessageService;
 import me.chanjar.weixin.channel.api.WxChannelService;
@@ -12,14 +11,7 @@ import me.chanjar.weixin.channel.bean.message.coupon.UserCouponExpireMessage;
 import me.chanjar.weixin.channel.bean.message.fund.AccountNotifyMessage;
 import me.chanjar.weixin.channel.bean.message.fund.QrNotifyMessage;
 import me.chanjar.weixin.channel.bean.message.fund.WithdrawNotifyMessage;
-import me.chanjar.weixin.channel.bean.message.order.OrderCancelMessage;
-import me.chanjar.weixin.channel.bean.message.order.OrderConfirmMessage;
-import me.chanjar.weixin.channel.bean.message.order.OrderDeliveryMessage;
-import me.chanjar.weixin.channel.bean.message.order.OrderExtMessage;
-import me.chanjar.weixin.channel.bean.message.order.OrderIdMessage;
-import me.chanjar.weixin.channel.bean.message.order.OrderPayMessage;
-import me.chanjar.weixin.channel.bean.message.order.OrderSettleMessage;
-import me.chanjar.weixin.channel.bean.message.order.OrderStatusMessage;
+import me.chanjar.weixin.channel.bean.message.order.*;
 import me.chanjar.weixin.channel.bean.message.product.BrandMessage;
 import me.chanjar.weixin.channel.bean.message.product.CategoryAuditMessage;
 import me.chanjar.weixin.channel.bean.message.product.SpuAuditMessage;
@@ -38,6 +30,8 @@ import me.chanjar.weixin.channel.message.rule.HandlerConsumer;
 import me.chanjar.weixin.channel.util.JsonUtils;
 import me.chanjar.weixin.common.session.WxSessionManager;
 
+import java.util.Map;
+
 import static me.chanjar.weixin.channel.constant.MessageEventConstants.*;
 
 /**
@@ -46,7 +40,9 @@ import static me.chanjar.weixin.channel.constant.MessageEventConstants.*;
 @Slf4j
 public abstract class BaseWxChannelMessageServiceImpl implements BaseWxChannelMessageService {
 
-  /** 消息路由器 */
+  /**
+   * 消息路由器
+   */
   protected WxChannelMessageRouter router;
 
   public BaseWxChannelMessageServiceImpl(WxChannelMessageRouter router) {
@@ -124,7 +120,7 @@ public abstract class BaseWxChannelMessageServiceImpl implements BaseWxChannelMe
     /* 用户加入会员 */
     this.addRule(UserInfoMessage.class, USER_VIP_JOIN, false, this::vipJoin);
     /* 用户注销会员 */
-    this.addRule(UserInfoMessage.class, USER_VIP_CLOSE,false, this::vipClose);
+    this.addRule(UserInfoMessage.class, USER_VIP_CLOSE, false, this::vipClose);
     /* 用户等级信息更新 */
     this.addRule(UserInfoMessage.class, USER_VIP_GRADE_INFO_UPDATE, false, this::vipGradeUpdate);
     /* 用户积分更新 */
@@ -133,7 +129,7 @@ public abstract class BaseWxChannelMessageServiceImpl implements BaseWxChannelMe
     this.addRule(ExchangeInfoMessage.class, USER_VIP_SCORE_EXCHANGE, false, this::vipScoreExchange);
 
     /* 分享员变更 */
-    this.addRule(SharerChangeMessage.class,SHARER_CHANGE,false,this::sharerChange);
+    this.addRule(SharerChangeMessage.class, SHARER_CHANGE, false, this::sharerChange);
 
     /* 小店注销 */
     this.addRule(CloseStoreMessage.class, CLOSE_STORE, this::closeStore);
@@ -144,10 +140,10 @@ public abstract class BaseWxChannelMessageServiceImpl implements BaseWxChannelMe
   /**
    * 添加一条规则进入路由器
    *
-   * @param clazz 消息类型
-   * @param event 事件类型
+   * @param clazz    消息类型
+   * @param event    事件类型
    * @param consumer 处理器
-   * @param <T> 消息类型
+   * @param <T>      消息类型
    */
   protected <T extends WxChannelMessage> void addRule(Class<T> clazz, String event, Boolean async,
                                                       HandlerConsumer<T, String, String, Map<String, Object>, WxSessionManager> consumer) {
@@ -162,7 +158,7 @@ public abstract class BaseWxChannelMessageServiceImpl implements BaseWxChannelMe
   }
 
   protected <T extends WxChannelMessage> void addRule(Class<T> clazz, String event,
-    HandlerConsumer<T, String, String, Map<String, Object>, WxSessionManager> consumer) {
+                                                      HandlerConsumer<T, String, String, Map<String, Object>, WxSessionManager> consumer) {
     this.addRule(clazz, event, true, consumer);
   }
 
@@ -176,196 +172,195 @@ public abstract class BaseWxChannelMessageServiceImpl implements BaseWxChannelMe
     return router.route(message, content, appId, service);
   }
 
-
   @Override
   public void orderNew(OrderIdMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                       Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("订单下单:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void orderCancel(OrderCancelMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                          Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("订单取消:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void orderPay(OrderPayMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                       Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("订单支付成功:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void orderWaitShipping(OrderIdMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                                Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("订单待发货:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void orderDelivery(OrderDeliveryMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                            Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("订单发货:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void orderConfirm(OrderConfirmMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                           Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("订单确认收货:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void orderSettle(OrderSettleMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                          Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("订单结算:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void orderExtInfoUpdate(OrderExtMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                                 Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("订单其他信息更新:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void orderStatusUpdate(OrderStatusMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                                Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("订单状态更新:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void spuAudit(SpuAuditMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                       Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("商品审核:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void spuStatusUpdate(SpuAuditMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                              Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("商品状态更新:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void spuUpdate(SpuAuditMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                        Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("商品更新:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void stockNoEnough(SpuStockMessage message, String content, String appId,
-          Map<String, Object> context, WxSessionManager sessionManager) {
+                            Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("商品库存不足:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void categoryAudit(CategoryAuditMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                            Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("分类审核:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void brandUpdate(BrandMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                          Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("品牌更新:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void afterSaleStatusUpdate(AfterSaleMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                                    Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("售后状态更新:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void complaintNotify(ComplaintMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                              Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("投诉通知:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void couponReceive(CouponReceiveMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                            Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("优惠券领取:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void couponCreate(CouponActionMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                           Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("优惠券创建:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void couponDelete(CouponActionMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                           Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("优惠券删除:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void couponExpire(CouponActionMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                           Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("优惠券过期:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void couponUpdate(CouponActionMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                           Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("优惠券更新:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void couponInvalid(CouponActionMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                            Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("优惠券失效:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void userCouponExpire(UserCouponExpireMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                               Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("用户优惠券过期:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void userCouponUse(UserCouponExpireMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                            Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("用户优惠券使用:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void userCouponUnuse(UserCouponExpireMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                              Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("用户优惠券取消使用:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void voucherSendSucc(VoucherMessage message, String content, String appId,
-          Map<String, Object> context, WxSessionManager sessionManager) {
+                              Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("发放团购优惠成功:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void accountNotify(AccountNotifyMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                            Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("账户通知:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void withdrawNotify(WithdrawNotifyMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                             Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("提现通知:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void qrNotify(QrNotifyMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                       Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("二维码通知:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void supplierItemUpdate(SupplierItemMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                                 Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("供应商商品更新:{}", JsonUtils.encode(message));
   }
 
   @Override
   public Object defaultMessageHandler(WxChannelMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                                      Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("默认消息处理:{}", JsonUtils.encode(message));
     return null;
   }
@@ -377,43 +372,43 @@ public abstract class BaseWxChannelMessageServiceImpl implements BaseWxChannelMe
 
   @Override
   public void vipJoin(UserInfoMessage message, String content, String appId,
-                               Map<String, Object> context, WxSessionManager sessionManager) {
+                      Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("用户加入会员:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void vipClose(UserInfoMessage message, String content, String appId,
-                                      Map<String, Object> context, WxSessionManager sessionManager) {
+                       Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("用户注销会员:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void vipGradeUpdate(UserInfoMessage message, String content, String appId,
-                                            Map<String, Object> context, WxSessionManager sessionManager) {
+                             Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("用户等级信息更新:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void vipScoreUpdate(UserInfoMessage message, String content, String appId,
-                                            Map<String, Object> context, WxSessionManager sessionManager) {
+                             Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("用户积分更新:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void vipScoreExchange(ExchangeInfoMessage message, String content, String appId,
-                                              Map<String, Object> context, WxSessionManager sessionManager) {
+                               Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("用户积分兑换:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void closeStore(CloseStoreMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                         Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("小店注销:{}", JsonUtils.encode(message));
   }
 
   @Override
   public void updateNickname(NicknameUpdateMessage message, String content, String appId,
-    Map<String, Object> context, WxSessionManager sessionManager) {
+                             Map<String, Object> context, WxSessionManager sessionManager) {
     log.info("小店修改名称:{}", JsonUtils.encode(message));
   }
 }

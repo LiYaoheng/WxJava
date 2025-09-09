@@ -1,11 +1,5 @@
 package me.chanjar.weixin.channel.api.impl;
 
-import static me.chanjar.weixin.channel.constant.WxChannelApiUrlConstants.Cooperation.CANCEL_COOPERATION_URL;
-import static me.chanjar.weixin.channel.constant.WxChannelApiUrlConstants.Cooperation.GENERATE_QRCODE_COOPERATION_URL;
-import static me.chanjar.weixin.channel.constant.WxChannelApiUrlConstants.Cooperation.GET_COOPERATION_STATUS_URL;
-import static me.chanjar.weixin.channel.constant.WxChannelApiUrlConstants.Cooperation.LIST_COOPERATION_URL;
-import static me.chanjar.weixin.channel.constant.WxChannelApiUrlConstants.Cooperation.UNBIND_COOPERATION_URL;
-
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.channel.api.WxStoreCooperationService;
 import me.chanjar.weixin.channel.bean.base.WxChannelBaseResponse;
@@ -16,6 +10,8 @@ import me.chanjar.weixin.channel.bean.cooperation.CooperationStatusResponse;
 import me.chanjar.weixin.channel.util.ResponseUtils;
 import me.chanjar.weixin.common.error.WxErrorException;
 
+import static me.chanjar.weixin.channel.constant.WxChannelApiUrlConstants.Cooperation.*;
+
 /**
  * 微信小店 合作账号相关接口
  *
@@ -24,7 +20,9 @@ import me.chanjar.weixin.common.error.WxErrorException;
 @Slf4j
 public class WxStoreCooperationServiceImpl implements WxStoreCooperationService {
 
-  /** 微信小店服务 */
+  /**
+   * 微信小店服务
+   */
   private final BaseWxChannelServiceImpl<?, ?> storeService;
 
   public WxStoreCooperationServiceImpl(BaseWxChannelServiceImpl<?, ?> storeService) {

@@ -1,6 +1,7 @@
 package me.chanjar.weixin.channel.bean.base;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 import java.util.StringJoiner;
 
@@ -13,7 +14,9 @@ public class WxChannelBaseResponse implements Serializable {
 
   private static final long serialVersionUID = 3141420881984171781L;
 
-  /** 请求成功状态码 */
+  /**
+   * 请求成功状态码
+   */
   public static final int SUCCESS_CODE = 0;
   public static final int INTERNAL_ERROR_CODE = -99;
 

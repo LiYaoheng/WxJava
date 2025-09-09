@@ -17,7 +17,9 @@ import me.chanjar.weixin.channel.bean.base.WxChannelBaseResponse;
 public class PromoterInfoResponse extends WxChannelBaseResponse {
 
   private static final long serialVersionUID = 6475158486029216487L;
-  /** 达人信息 */
+  /**
+   * 达人信息
+   */
   @JsonProperty("promoter")
   private PromoterInfo promoter;
 }

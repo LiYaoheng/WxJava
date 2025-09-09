@@ -17,11 +17,15 @@ import me.chanjar.weixin.channel.bean.base.WxChannelBaseResponse;
 public class SupplierBalanceResponse extends WxChannelBaseResponse {
 
   private static final long serialVersionUID = 5584817726976222436L;
-  /** 可提现余额 */
+  /**
+   * 可提现余额
+   */
   @JsonProperty("available_amount")
   private Integer availableAmount;
 
-  /** 待结算余额 */
+  /**
+   * 待结算余额
+   */
   @JsonProperty("pending_amount")
   private Integer pendingAmount;
 }

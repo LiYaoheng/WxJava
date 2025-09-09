@@ -1,6 +1,5 @@
 package me.chanjar.weixin.channel.api.impl;
 
-
 import com.google.gson.JsonObject;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.channel.api.*;
@@ -41,8 +40,7 @@ public abstract class BaseWxChannelServiceImpl<H, P> implements WxChannelService
   private final WxChannelWarehouseService warehouseService = new WxChannelWarehouseServiceImpl(this);
   private final WxChannelOrderService orderService = new WxChannelOrderServiceImpl(this);
   private final WxChannelAfterSaleService afterSaleService = new WxChannelAfterSaleServiceImpl(this);
-  private final WxChannelFreightTemplateService freightTemplateService =
-    new WxChannelFreightTemplateServiceImpl(this);
+  private final WxChannelFreightTemplateService freightTemplateService = new WxChannelFreightTemplateServiceImpl(this);
   private final WxChannelAddressService addressService = new WxChannelAddressServiceImpl(this);
   private final WxChannelCouponService couponService = new WxChannelCouponServiceImpl(this);
   private final WxChannelSharerService sharerService = new WxChannelSharerServiceImpl(this);
@@ -60,6 +58,7 @@ public abstract class BaseWxChannelServiceImpl<H, P> implements WxChannelService
   private WxChannelVipService vipService = null;
   private WxChannelCompassFinderService compassFinderService = null;
   private WxChannelLiveDashboardService liveDashboardService = null;
+  private WxSupplierPromoterService supplierPromoterService = null;
 
   protected WxChannelConfig config;
   private int retrySleepMillis = 1000;
@@ -473,4 +472,11 @@ public abstract class BaseWxChannelServiceImpl<H, P> implements WxChannelService
     return liveDashboardService;
   }
 
+  @Override
+  public WxSupplierPromoterService getSupplierPromoterService() {
+    if (supplierPromoterService == null) {
+      supplierPromoterService = new WxSupplierPromoterServiceImpl(this);
+    }
+    return supplierPromoterService;
+  }
 }

@@ -16,7 +16,9 @@ import me.chanjar.weixin.channel.bean.base.WxChannelBaseResponse;
 @EqualsAndHashCode(callSuper = true)
 public class AuthStatusResponse extends WxChannelBaseResponse {
 
-  /** 是否授权，0: 未授权, 1: 已授权 */
+  /**
+   * 是否授权，0: 未授权, 1: 已授权
+   */
   @JsonProperty("window_auth_status")
   private Integer windowAuthStatus;
 }

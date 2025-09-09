@@ -1,8 +1,5 @@
 package me.chanjar.weixin.channel.api.impl;
 
-import static me.chanjar.weixin.channel.constant.WxChannelApiUrlConstants.HomePage.*;
-
-
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.channel.api.WxStoreHomePageService;
 import me.chanjar.weixin.channel.bean.base.WxChannelBaseResponse;
@@ -12,21 +9,15 @@ import me.chanjar.weixin.channel.bean.home.banner.BannerApplyParam;
 import me.chanjar.weixin.channel.bean.home.banner.BannerApplyResponse;
 import me.chanjar.weixin.channel.bean.home.banner.BannerGetResponse;
 import me.chanjar.weixin.channel.bean.home.banner.BannerInfo;
-import me.chanjar.weixin.channel.bean.home.tree.TreeProductEditInfo;
-import me.chanjar.weixin.channel.bean.home.tree.TreeProductEditParam;
-import me.chanjar.weixin.channel.bean.home.tree.TreeProductListInfo;
-import me.chanjar.weixin.channel.bean.home.tree.TreeProductListParam;
-import me.chanjar.weixin.channel.bean.home.tree.TreeProductListResponse;
-import me.chanjar.weixin.channel.bean.home.tree.TreeShowGetResponse;
-import me.chanjar.weixin.channel.bean.home.tree.TreeShowInfo;
-import me.chanjar.weixin.channel.bean.home.tree.TreeShowParam;
-import me.chanjar.weixin.channel.bean.home.tree.TreeShowSetResponse;
+import me.chanjar.weixin.channel.bean.home.tree.*;
 import me.chanjar.weixin.channel.bean.home.window.WindowProductIndexParam;
 import me.chanjar.weixin.channel.bean.home.window.WindowProductListParam;
 import me.chanjar.weixin.channel.bean.home.window.WindowProductSetting;
 import me.chanjar.weixin.channel.bean.home.window.WindowProductSettingResponse;
 import me.chanjar.weixin.channel.util.ResponseUtils;
 import me.chanjar.weixin.common.error.WxErrorException;
+
+import static me.chanjar.weixin.channel.constant.WxChannelApiUrlConstants.HomePage.*;
 
 /**
  * 微信小店 主页管理相关接口
@@ -36,13 +27,14 @@ import me.chanjar.weixin.common.error.WxErrorException;
 @Slf4j
 public class WxStoreHomePageServiceImpl implements WxStoreHomePageService {
 
-  /** 微信小店服务 */
+  /**
+   * 微信小店服务
+   */
   private final BaseWxChannelServiceImpl<?, ?> storeService;
 
   public WxStoreHomePageServiceImpl(BaseWxChannelServiceImpl<?, ?> storeService) {
     this.storeService = storeService;
   }
-
 
   @Override
   public WxChannelBaseResponse addTreeProduct(TreeProductEditInfo info) throws WxErrorException {

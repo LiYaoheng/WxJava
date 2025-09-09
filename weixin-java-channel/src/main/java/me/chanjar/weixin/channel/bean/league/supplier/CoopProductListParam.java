@@ -2,10 +2,11 @@ package me.chanjar.weixin.channel.bean.league.supplier;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 
 /**
  * 合作商品详情请求
@@ -19,15 +20,21 @@ import lombok.NoArgsConstructor;
 public class CoopProductListParam implements Serializable {
 
   private static final long serialVersionUID = -9023029707828535352L;
-  /** 团长商品 所属小店appid */
+  /**
+   * 团长商品 所属小店appid
+   */
   @JsonProperty("appid")
   private String appid;
 
-  /** 单页商品数（不超过30） */
+  /**
+   * 单页商品数（不超过30）
+   */
   @JsonProperty("page_size")
   private Integer pageSize;
 
-  /** 由上次请求返回，顺序翻页时需要传入, 会从上次返回的结果往后翻一页 */
+  /**
+   * 由上次请求返回，顺序翻页时需要传入, 会从上次返回的结果往后翻一页
+   */
   @JsonProperty("next_key")
   private String nextKey;
 

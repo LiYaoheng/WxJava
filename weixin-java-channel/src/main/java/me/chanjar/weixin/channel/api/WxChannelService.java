@@ -182,4 +182,6 @@ public interface WxChannelService extends BaseWxChannelService {
    */
   WxChannelLiveDashboardService getLiveDashboardService();
 
+  WxSupplierPromoterService getSupplierPromoterService();
+
 }
