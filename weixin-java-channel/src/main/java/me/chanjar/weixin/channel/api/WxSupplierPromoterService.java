@@ -109,7 +109,7 @@ public interface WxSupplierPromoterService {
    * @param needTotalNum 否需要返回符合条件的记录总数
    * @return
    */
-  PromoterSubscribeProductResponse getSubscribeProduct(Integer pageSize, String nextKey, Boolean needTotalNum) throws WxErrorException;
+  PromoterSubscribeProductResponse getSubscribeProductList(Integer pageSize, String nextKey, Boolean needTotalNum) throws WxErrorException;
 
   /**
    * 获取商品基础详情
@@ -118,7 +118,7 @@ public interface WxSupplierPromoterService {
    * @param productId 商品id
    * @return
    */
-  PromoterPromoteProductDetailResponse getProductDetail(String shopAppid, Long productId) throws WxErrorException;
+  PromoterPromoteProductDetailResponse getSubscribeProductDetail(String shopAppid, Long productId) throws WxErrorException;
 
   /**
    * 获取佣金单列表
@@ -139,6 +139,6 @@ public interface WxSupplierPromoterService {
    * @param skuId   商品skuid，可从获取佣金单列表接口获得
    * @return
    */
-  PromoterOrderDetailResponse getOrder(Long orderId, Long skuId) throws WxErrorException;
+  PromoterOrderDetailResponse getOrderDetail(Long orderId, Long skuId) throws WxErrorException;
 
 }

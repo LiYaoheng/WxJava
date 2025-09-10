@@ -96,6 +96,7 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
     reqJson.addProperty("get_available_coupon", getAvailableCoupon);
     reqJson.addProperty("head_supplier_appid", headSupplierAppid);
     String resJson = shopService.post(GET_PROMOTE_PRODUCT_DETAIL_URL, reqJson);
+    log.info("wechat api {},response:{}", GET_PROMOTE_PRODUCT_DETAIL_URL, resJson);
     return ResponseUtils.decode(resJson, PromoterPromoteProductDetailResponse.class);
   }
 
@@ -116,7 +117,7 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
   }
 
   @Override
-  public PromoterSubscribeProductResponse getSubscribeProduct(Integer pageSize, String nextKey, Boolean needTotalNum) throws WxErrorException {
+  public PromoterSubscribeProductResponse getSubscribeProductList(Integer pageSize, String nextKey, Boolean needTotalNum) throws WxErrorException {
     JsonObject reqJson = new JsonObject();
     reqJson.addProperty("next_key", nextKey);
     reqJson.addProperty("page_size", pageSize);
@@ -126,11 +127,12 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
   }
 
   @Override
-  public PromoterPromoteProductDetailResponse getProductDetail(String shopAppid, Long productId) throws WxErrorException {
+  public PromoterPromoteProductDetailResponse getSubscribeProductDetail(String shopAppid, Long productId) throws WxErrorException {
     JsonObject reqJson = new JsonObject();
     reqJson.addProperty("shop_appid", shopAppid);
     reqJson.addProperty("product_id", productId);
     String resJson = shopService.post(GET_PRODUCT_DETAIL_URL, reqJson);
+    log.info("wechat api {},response:{}", GET_PRODUCT_DETAIL_URL, resJson);
     return ResponseUtils.decode(resJson, PromoterPromoteProductDetailResponse.class);
   }
 
@@ -145,11 +147,12 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
   }
 
   @Override
-  public PromoterOrderDetailResponse getOrder(Long orderId, Long skuId) throws WxErrorException {
+  public PromoterOrderDetailResponse getOrderDetail(Long orderId, Long skuId) throws WxErrorException {
     JsonObject reqJson = new JsonObject();
     reqJson.addProperty("order_id", orderId);
     reqJson.addProperty("sku_id", skuId);
     String resJson = shopService.post(GET_ORDER_URL, reqJson);
+    log.info("wechat api {},response:{}", GET_ORDER_URL, resJson);
     return ResponseUtils.decode(resJson, PromoterOrderDetailResponse.class);
   }
 }

@@ -1,8 +1,6 @@
 package me.chanjar.weixin.channel.bean.supplier;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -33,13 +31,13 @@ public class PromoterPromoteProductDetailResponse extends WxChannelBaseResponse 
    * 商品可用的公开机构券
    */
   @JsonProperty("publish_coupons")
-  private JsonArray publish_coupons;
+  private Object publish_coupons;
 
   /**
    * 商品可用的定向机构券
    */
   @JsonProperty("cooperative_coupons")
-  private JsonArray cooperative_coupons;
+  private Object cooperative_coupons;
 
   @Data
   @NoArgsConstructor
@@ -72,13 +70,13 @@ public class PromoterPromoteProductDetailResponse extends WxChannelBaseResponse 
      * 跟佣信息
      */
     @JsonProperty("commission_info")
-    private JsonObject commission_info;
+    private Object commission_info;
 
     /**
      * 供货机构信息
      */
     @JsonProperty("head_supplier_info")
-    private JsonObject head_supplier_info;
+    private Object head_supplier_info;
 
   }
 
@@ -96,16 +94,16 @@ public class PromoterPromoteProductDetailResponse extends WxChannelBaseResponse 
     private List<String> head_imgs;
 
     @JsonProperty("desc_info")
-    private JsonObject desc_info;
+    private Object desc_info;
 
     @JsonProperty("cats")
-    private JsonArray cats;
+    private Object cats;
 
     @JsonProperty("cats_v2")
-    private JsonArray cats_v2;
+    private Object cats_v2;
 
     @JsonProperty("skus")
-    private JsonArray skus;
+    private Object skus;
 
     @JsonProperty("product_promotion_link")
     private String product_promotion_link;

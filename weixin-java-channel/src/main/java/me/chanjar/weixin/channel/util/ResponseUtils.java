@@ -1,13 +1,13 @@
 package me.chanjar.weixin.channel.util;
 
-
-import static me.chanjar.weixin.channel.bean.base.WxChannelBaseResponse.INTERNAL_ERROR_CODE;
-
-import java.lang.reflect.InvocationTargetException;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.channel.bean.base.WxChannelBaseResponse;
 import org.apache.commons.lang3.StringUtils;
+
+import java.lang.reflect.InvocationTargetException;
+
+import static me.chanjar.weixin.channel.bean.base.WxChannelBaseResponse.INTERNAL_ERROR_CODE;
 
 /**
  * 响应工具类
