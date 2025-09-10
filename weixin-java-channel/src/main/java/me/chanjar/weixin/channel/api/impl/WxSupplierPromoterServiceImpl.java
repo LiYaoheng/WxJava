@@ -127,13 +127,13 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
   }
 
   @Override
-  public PromoterPromoteProductDetailResponse getSubscribeProductDetail(String shopAppid, Long productId) throws WxErrorException {
+  public PromoterSubscribeProductDetailResponse getSubscribeProductDetail(String shopAppid, Long productId) throws WxErrorException {
     JsonObject reqJson = new JsonObject();
     reqJson.addProperty("shop_appid", shopAppid);
     reqJson.addProperty("product_id", productId);
     String resJson = shopService.post(GET_PRODUCT_DETAIL_URL, reqJson);
     log.info("wechat api {},response:{}", GET_PRODUCT_DETAIL_URL, resJson);
-    return ResponseUtils.decode(resJson, PromoterPromoteProductDetailResponse.class);
+    return ResponseUtils.decode(resJson, PromoterSubscribeProductDetailResponse.class);
   }
 
   @Override

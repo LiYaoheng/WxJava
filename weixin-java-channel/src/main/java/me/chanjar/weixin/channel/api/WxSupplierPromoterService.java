@@ -118,7 +118,7 @@ public interface WxSupplierPromoterService {
    * @param productId 商品id
    * @return
    */
-  PromoterPromoteProductDetailResponse getSubscribeProductDetail(String shopAppid, Long productId) throws WxErrorException;
+  PromoterSubscribeProductDetailResponse getSubscribeProductDetail(String shopAppid, Long productId) throws WxErrorException;
 
   /**
    * 获取佣金单列表

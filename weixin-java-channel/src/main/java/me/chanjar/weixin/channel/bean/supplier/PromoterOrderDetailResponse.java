@@ -1,7 +1,6 @@
 package me.chanjar.weixin.channel.bean.supplier;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.gson.JsonObject;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -64,31 +63,31 @@ public class PromoterOrderDetailResponse extends WxChannelBaseResponse {
      * 小店商家信息
      */
     @JsonProperty("shop_info")
-    private JsonObject shop_info;
+    private Object shop_info;
 
     /**
      * 佣金单商品信息
      */
     @JsonProperty("product_info")
-    private JsonObject product_info;
+    private Object product_info;
 
     /**
      * 订单信息
      */
     @JsonProperty("order_info")
-    private JsonObject order_info;
+    private Object order_info;
 
     /**
      * 分佣信息
      */
     @JsonProperty("commission_info")
-    private JsonObject commission_info;
+    private Object commission_info;
 
     /**
      * 买家信息
      */
     @JsonProperty("buyer_info")
-    private JsonObject buyer_info;
+    private Object buyer_info;
 
   }
 
