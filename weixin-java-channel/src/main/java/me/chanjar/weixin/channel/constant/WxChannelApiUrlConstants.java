@@ -990,14 +990,44 @@ public class WxChannelApiUrlConstants {
     String GET_PRODUCT_PROMOTION_QRCODE_INFO_URL = "https://api.weixin.qq.com/channels/ec/promoter/get_product_promotion_qrcode_info";
 
     /**
+     * 获取可推广的商品id列表
+     */
+    String GET_PROMOTE_PRODUCT_LIST_URL = "https://api.weixin.qq.com/channels/ec/promoter/get_promote_product_list";
+
+    /**
      * 获取合作商品详情
      */
     String GET_PROMOTE_PRODUCT_DETAIL_URL = "https://api.weixin.qq.com/channels/ec/promoter/get_promote_product_detail";
 
     /**
-     * 获取可推广的商品id列表
+     * 商品订阅
      */
-    String GET_PROMOTE_PRODUCT_LIST_URL = "https://api.weixin.qq.com/channels/ec/promoter/get_promote_product_list";
+    String SUBSCRIBE_PRODUCT_URL = "https://api.weixin.qq.com/channels/ec/league/headsupplier/subscription/subscribe";
+
+    /**
+     * 取消商品订阅
+     */
+    String UNSUBSCRIBE_PRODUCT_URL = "https://api.weixin.qq.com/channels/ec/league/headsupplier/subscription/unsubscribe";
+
+    /**
+     * 获取订阅的商品列表
+     */
+    String GET_SUBSCRIBE_PRODUCT_URL = "https://api.weixin.qq.com/channels/ec/league/headsupplier/subscription/getsubscribe";
+
+    /**
+     * 获取商品基础详情
+     */
+    String GET_PRODUCT_DETAIL_URL = "https://api.weixin.qq.com/channels/ec/league/headsupplier/productdetail/get";
+
+    /**
+     * 获取佣金单列表
+     */
+    String GET_ORDER_LIST_URL = "https://api.weixin.qq.com/channels/ec/league/headsupplier/order/list/get";
+
+    /**
+     * 获取佣金单详情
+     */
+    String GET_ORDER_URL = "https://api.weixin.qq.com/channels/ec/league/headsupplier/order/get";
 
   }
 }
