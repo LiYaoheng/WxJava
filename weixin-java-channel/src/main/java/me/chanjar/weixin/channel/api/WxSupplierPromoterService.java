@@ -71,7 +71,7 @@ public interface WxSupplierPromoterService {
    * @param nextKey  分页参数，第一页为空，后面返回前面一页返回的数据
    * @return
    */
-  PromoterPromoteProductResponse getPromoteProductList(Integer planType, Integer pageSize, String nextKey) throws WxErrorException;
+  PromoterPromoteProductResponse getPromoteProductList(Integer planType, Integer pageSize, String nextKey, String shopAppid, String keyword) throws WxErrorException;
 
   /**
    * 获取合作商品详情
