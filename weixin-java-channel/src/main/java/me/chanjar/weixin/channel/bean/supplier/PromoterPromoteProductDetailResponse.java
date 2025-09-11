@@ -94,7 +94,7 @@ public class PromoterPromoteProductDetailResponse extends WxChannelBaseResponse 
     private List<String> head_imgs;
 
     @JsonProperty("desc_info")
-    private Object desc_info;
+    private ProductInfoDetailDesc desc_info;
 
     @JsonProperty("cats")
     private Object cats;
@@ -103,13 +103,46 @@ public class PromoterPromoteProductDetailResponse extends WxChannelBaseResponse 
     private Object cats_v2;
 
     @JsonProperty("skus")
-    private Object skus;
+    private List<ProductInfoDetailSku> skus;
 
     @JsonProperty("product_promotion_link")
     private String product_promotion_link;
 
     @JsonProperty("status")
     private Integer status;
+
+  }
+
+  @Data
+  @NoArgsConstructor
+  public static class ProductInfoDetailDesc implements Serializable {
+    @JsonProperty("imgs")
+    private List<String> imgs;
+
+    @JsonProperty("desc")
+    private String desc;
+  }
+
+  @Data
+  @NoArgsConstructor
+  public static class ProductInfoDetailSku implements Serializable {
+    @JsonProperty("sku_id")
+    private String sku_id;
+
+    @JsonProperty("thumb_img")
+    private String thumb_img;
+
+    @JsonProperty("sale_price")
+    private Double sale_price;
+
+    @JsonProperty("stock_num")
+    private Double stock_num;
+
+    @JsonProperty("sku_attrs")
+    private Object sku_attrs;
+
+    @JsonProperty("sku_deliver_info")
+    private Object sku_deliver_info;
 
   }
 
