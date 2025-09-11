@@ -70,7 +70,7 @@ public class PromoterPromoteProductDetailResponse extends WxChannelBaseResponse 
      * 跟佣信息
      */
     @JsonProperty("commission_info")
-    private Object commission_info;
+    private ProductInfoCommission commission_info;
 
     /**
      * 供货机构信息
@@ -143,6 +143,23 @@ public class PromoterPromoteProductDetailResponse extends WxChannelBaseResponse 
 
     @JsonProperty("sku_deliver_info")
     private Object sku_deliver_info;
+
+  }
+
+  @Data
+  @NoArgsConstructor
+  public static class ProductInfoCommission implements Serializable {
+    @JsonProperty("status")
+    private String status;
+
+    @JsonProperty("service_ratio")
+    private Integer service_ratio;
+
+    @JsonProperty("start_time")
+    private Long start_time;
+
+    @JsonProperty("end_time")
+    private Long end_time;
 
   }
 
