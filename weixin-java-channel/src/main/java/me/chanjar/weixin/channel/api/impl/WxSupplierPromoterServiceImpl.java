@@ -56,23 +56,21 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
   }
 
   @Override
-  public PromoterProductPromotionLinkResponse getProductPromotionLinkInfo(String sharerOpenid, Long productId, String shopAppid, String productShortLink) throws WxErrorException {
+  public PromoterProductPromotionLinkResponse getProductPromotionLinkInfo(String sharerAppid, Long productId, String shopAppid) throws WxErrorException {
     JsonObject reqJson = new JsonObject();
-    reqJson.addProperty("sharer_openid", sharerOpenid);
+    reqJson.addProperty("sharer_appid", sharerAppid);
     reqJson.addProperty("product_id", productId);
     reqJson.addProperty("shop_appid", shopAppid);
-    reqJson.addProperty("product_short_link", productShortLink);
     String resJson = shopService.post(GET_PRODUCT_PROMOTION_LINK_INFO_URL, reqJson);
     return ResponseUtils.decode(resJson, PromoterProductPromotionLinkResponse.class);
   }
 
   @Override
-  public PromoterProductPromotionLinkResponse getProductPromotionQrcodeInfo(String sharerOpenid, Long productId, String shopAppid, String productShortLink) throws WxErrorException {
+  public PromoterProductPromotionLinkResponse getProductPromotionQrcodeInfo(String sharerAppid, Long productId, String shopAppid) throws WxErrorException {
     JsonObject reqJson = new JsonObject();
-    reqJson.addProperty("sharer_openid", sharerOpenid);
+    reqJson.addProperty("sharer_appid", sharerAppid);
     reqJson.addProperty("product_id", productId);
     reqJson.addProperty("shop_appid", shopAppid);
-    reqJson.addProperty("product_short_link", productShortLink);
     String resJson = shopService.post(GET_PRODUCT_PROMOTION_QRCODE_INFO_URL, reqJson);
     return ResponseUtils.decode(resJson, PromoterProductPromotionLinkResponse.class);
   }

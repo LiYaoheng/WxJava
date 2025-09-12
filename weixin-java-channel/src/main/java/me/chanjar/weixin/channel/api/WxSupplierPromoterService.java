@@ -43,24 +43,22 @@ public interface WxSupplierPromoterService {
   /**
    * 获取推客对某个商品的推广短链
    *
-   * @param sharerOpenid     推客在小程序中的openid。 必须是机构绑定小程序的用户openid，而不能是其他小程序的用户openid
-   * @param productId        商品 id，如果使用该参数，需要传入shop_appid
-   * @param shopAppid        商品所属店铺 appid
-   * @param productShortLink 商品短链，和 product_id 二选一
+   * @param sharerAppid 推客在小程序中的openid。 必须是机构绑定小程序的用户openid，而不能是其他小程序的用户openid
+   * @param productId   商品 id，如果使用该参数，需要传入shop_appid
+   * @param shopAppid   商品所属店铺 appid
    * @return
    */
-  PromoterProductPromotionLinkResponse getProductPromotionLinkInfo(String sharerOpenid, Long productId, String shopAppid, String productShortLink) throws WxErrorException;
+  PromoterProductPromotionLinkResponse getProductPromotionLinkInfo(String sharerAppid, Long productId, String shopAppid) throws WxErrorException;
 
   /**
    * 获取推客对某个商品的推广二维码
    *
-   * @param sharerOpenid     推客在小程序中的openid。 必须是机构绑定小程序的用户openid，而不能是其他小程序的用户openid
-   * @param productId        商品 id，如果使用该参数，需要传入shop_appid
-   * @param shopAppid        商品所属店铺 appid
-   * @param productShortLink 商品短链，和 product_id 二选一
+   * @param sharerAppid 推客在小程序中的openid。 必须是机构绑定小程序的用户openid，而不能是其他小程序的用户openid
+   * @param productId   商品 id，如果使用该参数，需要传入shop_appid
+   * @param shopAppid   商品所属店铺 appid
    * @return
    */
-  PromoterProductPromotionLinkResponse getProductPromotionQrcodeInfo(String sharerOpenid, Long productId, String shopAppid, String productShortLink) throws WxErrorException;
+  PromoterProductPromotionLinkResponse getProductPromotionQrcodeInfo(String sharerAppid, Long productId, String shopAppid) throws WxErrorException;
 
   /**
    * 获取可推广的商品id列表
