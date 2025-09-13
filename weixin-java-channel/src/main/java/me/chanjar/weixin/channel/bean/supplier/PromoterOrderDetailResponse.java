@@ -39,7 +39,7 @@ public class PromoterOrderDetailResponse extends WxChannelBaseResponse {
      * 商品skuid
      */
     @JsonProperty("sku_id")
-    private Long sku_id;
+    private String sku_id;
 
     @JsonProperty("create_time")
     private Long create_time;
@@ -81,7 +81,7 @@ public class PromoterOrderDetailResponse extends WxChannelBaseResponse {
      * 分佣信息
      */
     @JsonProperty("commission_info")
-    private Object commission_info;
+    private CommissionInfo commission_info;
 
     /**
      * 买家信息
@@ -89,6 +89,29 @@ public class PromoterOrderDetailResponse extends WxChannelBaseResponse {
     @JsonProperty("buyer_info")
     private Object buyer_info;
 
+  }
+
+  @Data
+  @NoArgsConstructor
+  public static class CommissionInfo implements Serializable {
+
+    @JsonProperty("service_ratio")
+    private Long service_ratio;
+
+    @JsonProperty("service_amount")
+    private Long service_amount;
+
+    @JsonProperty("promotion_channel")
+    private Integer promotion_channel;
+
+    @JsonProperty("sharer_info")
+    private Object sharer_info;
+
+    @JsonProperty("promotion_info")
+    private Object promotion_info;
+
+    @JsonProperty("promoter_agency_info")
+    private Object promoter_agency_info;
   }
 
 }
