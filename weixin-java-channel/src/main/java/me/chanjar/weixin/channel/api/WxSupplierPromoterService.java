@@ -61,6 +61,17 @@ public interface WxSupplierPromoterService {
   PromoterProductPromotionLinkResponse getProductPromotionQrcodeInfo(String sharerAppid, Long productId, String shopAppid) throws WxErrorException;
 
   /**
+   * 获取某个推客某个商品的内嵌商品卡片product_promotion_link
+   *
+   * @param sharerAppid 推客 appid
+   * @param productId   商品 id
+   * @param shopAppid   商品所属店铺 appid
+   * @return
+   * @throws WxErrorException
+   */
+  PromoterProductPromotionLinkResponse getPromoterSingleProductPromotionInfo(String sharerAppid, Long productId, String shopAppid) throws WxErrorException;
+
+  /**
    * 获取可推广的商品id列表
    * https://developers.weixin.qq.com/doc/store/leagueheadsupplier/api/sharer/getshop/api_getpromoteproductlist.html
    *

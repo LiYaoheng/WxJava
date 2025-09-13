@@ -990,6 +990,11 @@ public class WxChannelApiUrlConstants {
     String GET_PRODUCT_PROMOTION_QRCODE_INFO_URL = "https://api.weixin.qq.com/channels/ec/promoter/get_product_promotion_qrcode_info";
 
     /**
+     * 获取某个推客某个商品的内嵌商品卡片product_promotion_link
+     */
+    String GET_PROMOTER_SINGLE_PRODUCT_PROMOTION_INFO_URL = "https://api.weixin.qq.com/channels/ec/promoter/get_promoter_single_product_promotion_info";
+
+    /**
      * 获取可推广的商品id列表
      */
     String GET_PROMOTE_PRODUCT_LIST_URL = "https://api.weixin.qq.com/channels/ec/promoter/get_promote_product_list";

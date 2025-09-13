@@ -30,4 +30,10 @@ public class PromoterProductPromotionLinkResponse extends WxChannelBaseResponse 
   @JsonProperty("qrcode_url")
   private String qrcodeUrl;
 
+  /**
+   * 内嵌商品卡片的推广参数
+   */
+  @JsonProperty("product_promotion_link")
+  private String productPromotionLink;
+
 }

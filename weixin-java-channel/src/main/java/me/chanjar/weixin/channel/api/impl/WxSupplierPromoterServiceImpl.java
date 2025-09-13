@@ -76,6 +76,16 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
   }
 
   @Override
+  public PromoterProductPromotionLinkResponse getPromoterSingleProductPromotionInfo(String sharerAppid, Long productId, String shopAppid) throws WxErrorException {
+    JsonObject reqJson = new JsonObject();
+    reqJson.addProperty("sharer_appid", sharerAppid);
+    reqJson.addProperty("product_id", productId);
+    reqJson.addProperty("shop_appid", shopAppid);
+    String resJson = shopService.post(GET_PROMOTER_SINGLE_PRODUCT_PROMOTION_INFO_URL, reqJson);
+    return ResponseUtils.decode(resJson, PromoterProductPromotionLinkResponse.class);
+  }
+
+  @Override
   public PromoterPromoteProductResponse getPromoteProductList(Integer planType, Integer pageSize, String nextKey, String shopAppid, String keyword) throws WxErrorException {
     JsonObject reqJson = new JsonObject();
     reqJson.addProperty("shop_appid", shopAppid);
