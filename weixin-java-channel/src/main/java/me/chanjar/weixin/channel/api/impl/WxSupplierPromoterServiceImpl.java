@@ -47,7 +47,7 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
   }
 
   @Override
-  public PromoterBindShopResponse geBindShopList(String nextKey, Integer pageSize) throws WxErrorException {
+  public PromoterBindShopResponse getBindShopList(String nextKey, Integer pageSize) throws WxErrorException {
     JsonObject reqJson = new JsonObject();
     reqJson.addProperty("next_key", nextKey);
     reqJson.addProperty("page_size", pageSize);

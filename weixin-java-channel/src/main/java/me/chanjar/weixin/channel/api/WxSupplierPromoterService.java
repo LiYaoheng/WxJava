@@ -38,7 +38,7 @@ public interface WxSupplierPromoterService {
    * @param pageSize
    * @return
    */
-  PromoterBindShopResponse geBindShopList(String nextKey, Integer pageSize) throws WxErrorException;
+  PromoterBindShopResponse getBindShopList(String nextKey, Integer pageSize) throws WxErrorException;
 
   /**
    * 获取推客对某个商品的推广短链
