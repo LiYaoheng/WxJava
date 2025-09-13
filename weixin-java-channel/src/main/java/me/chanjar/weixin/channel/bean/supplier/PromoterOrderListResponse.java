@@ -49,7 +49,7 @@ public class PromoterOrderListResponse extends WxChannelBaseResponse {
      * skuId
      */
     @JsonProperty("sku_id")
-    private Long sku_id;
+    private String sku_id;
 
   }
 

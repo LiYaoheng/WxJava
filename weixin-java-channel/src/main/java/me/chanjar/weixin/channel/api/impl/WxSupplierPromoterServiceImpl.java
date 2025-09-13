@@ -157,7 +157,7 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
   }
 
   @Override
-  public PromoterOrderDetailResponse getOrderDetail(Long orderId, Long skuId) throws WxErrorException {
+  public PromoterOrderDetailResponse getOrderDetail(String orderId, String skuId) throws WxErrorException {
     JsonObject reqJson = new JsonObject();
     reqJson.addProperty("order_id", orderId);
     reqJson.addProperty("sku_id", skuId);

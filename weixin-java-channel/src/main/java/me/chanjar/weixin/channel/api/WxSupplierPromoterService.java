@@ -148,6 +148,6 @@ public interface WxSupplierPromoterService {
    * @param skuId   商品skuid，可从获取佣金单列表接口获得
    * @return
    */
-  PromoterOrderDetailResponse getOrderDetail(Long orderId, Long skuId) throws WxErrorException;
+  PromoterOrderDetailResponse getOrderDetail(String orderId, String skuId) throws WxErrorException;
 
 }
