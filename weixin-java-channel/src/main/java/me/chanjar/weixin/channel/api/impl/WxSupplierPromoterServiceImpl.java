@@ -1,5 +1,6 @@
 package me.chanjar.weixin.channel.api.impl;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.channel.api.WxSupplierPromoterService;
@@ -7,6 +8,8 @@ import me.chanjar.weixin.channel.bean.base.WxChannelBaseResponse;
 import me.chanjar.weixin.channel.bean.supplier.*;
 import me.chanjar.weixin.channel.util.ResponseUtils;
 import me.chanjar.weixin.common.error.WxErrorException;
+
+import java.util.List;
 
 import static me.chanjar.weixin.channel.constant.WxChannelApiUrlConstants.Promoter.*;
 
@@ -44,6 +47,14 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
     reqJson.addProperty("sharer_openid", sharerOpenid);
     String resJson = shopService.post(GET_BIND_SHARER_LIST_URL, reqJson);
     return ResponseUtils.decode(resJson, PromoterBindSharerResponse.class);
+  }
+
+  @Override
+  public WxChannelBaseResponse headsupplierUnbindPromoter(String sharerAppid) throws WxErrorException {
+    JsonObject reqJson = new JsonObject();
+    reqJson.addProperty("sharer_appid", sharerAppid);
+    String resJson = shopService.post(HEADSUPPLIER_UNBIND_PROMOTER_URL, reqJson);
+    return ResponseUtils.decode(resJson, WxChannelBaseResponse.class);
   }
 
   @Override
@@ -164,5 +175,43 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
     String resJson = shopService.post(GET_ORDER_URL, reqJson);
     log.info("wechat api {},response:{}", GET_ORDER_URL, resJson);
     return ResponseUtils.decode(resJson, PromoterOrderDetailResponse.class);
+  }
+
+  @Override
+  public PromoterBindTalentResponse getBindTalentList(String nextKey, Integer pageSize, String talentAppid) throws WxErrorException {
+    JsonObject reqJson = new JsonObject();
+    reqJson.addProperty("next_key", nextKey);
+    reqJson.addProperty("page_size", pageSize);
+    reqJson.addProperty("talent_appid", talentAppid);
+    String resJson = shopService.post(GET_BIND_TALENT_LIST_URL, reqJson);
+    return ResponseUtils.decode(resJson, PromoterBindTalentResponse.class);
+  }
+
+  @Override
+  public PromoterFeedListResponse getFeedList(String nextKey, Integer pageSize, String talentAppid, String finderExportUsername) throws WxErrorException {
+    JsonObject reqJson = new JsonObject();
+    reqJson.addProperty("next_key", nextKey);
+    reqJson.addProperty("page_size", pageSize);
+    reqJson.addProperty("talent_appid", talentAppid);
+    reqJson.addProperty("finder_exportusername", finderExportUsername);
+    String resJson = shopService.post(GET_FEED_LIST_URL, reqJson);
+    return ResponseUtils.decode(resJson, PromoterFeedListResponse.class);
+  }
+
+  @Override
+  public PromoterFeedInfoResponse getFeedPromotionInfo(List<String> feedList, String miniProgramAppid, String talentAppid, String sharerAppid) throws WxErrorException {
+    JsonArray feedListJson = new JsonArray();
+    for (String exportId : feedList) {
+      JsonObject reqJson = new JsonObject();
+      reqJson.addProperty("export_id", exportId);
+      feedListJson.add(reqJson);
+    }
+    JsonObject reqJson = new JsonObject();
+    reqJson.add("feed_list", feedListJson);
+    reqJson.addProperty("mini_program_appid", miniProgramAppid);
+    reqJson.addProperty("talent_appid", talentAppid);
+    reqJson.addProperty("sharer_appid", sharerAppid);
+    String resJson = shopService.post(GET_FEED_PROMOTION_INFO_URL, reqJson);
+    return ResponseUtils.decode(resJson, PromoterFeedInfoResponse.class);
   }
 }

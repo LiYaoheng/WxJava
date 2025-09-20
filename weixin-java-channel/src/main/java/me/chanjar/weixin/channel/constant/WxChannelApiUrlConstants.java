@@ -975,6 +975,11 @@ public class WxChannelApiUrlConstants {
     String GET_BIND_SHARER_LIST_URL = "https://api.weixin.qq.com/channels/ec/promoter/get_bind_sharer_list";
 
     /**
+     * 机构解绑推客
+     */
+    String HEADSUPPLIER_UNBIND_PROMOTER_URL = "https://api.weixin.qq.com/channels/ec/promoter/headsupplier_unbind_promoter";
+
+    /**
      * 获取合作的小店列表
      */
     String GET_BIND_SHOP_LIST_URL = "https://api.weixin.qq.com/channels/ec/promoter/get_bind_shop_list";
@@ -1033,6 +1038,21 @@ public class WxChannelApiUrlConstants {
      * 获取佣金单详情
      */
     String GET_ORDER_URL = "https://api.weixin.qq.com/channels/ec/league/headsupplier/order/get";
+
+    /**
+     * 获取合作的带货者列表
+     */
+    String GET_BIND_TALENT_LIST_URL = "https://api.weixin.qq.com/channels/ec/promoter/get_bind_talent_list";
+
+    /**
+     * 获取带货者推广的短视频信息
+     */
+    String GET_FEED_LIST_URL = "https://api.weixin.qq.com/channels/ec/promoter/get_feed_list";
+
+    /**
+     * 生成某个带货者的某些短视频内嵌短视频卡片需要的feedtoken
+     */
+    String GET_FEED_PROMOTION_INFO_URL = "https://api.weixin.qq.com/channels/ec/promoter/get_feed_promotion_info";
 
   }
 }

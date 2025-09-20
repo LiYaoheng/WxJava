@@ -4,6 +4,8 @@ import me.chanjar.weixin.channel.bean.base.WxChannelBaseResponse;
 import me.chanjar.weixin.channel.bean.supplier.*;
 import me.chanjar.weixin.common.error.WxErrorException;
 
+import java.util.List;
+
 /**
  * 联盟带货机构 推客带货
  *
@@ -30,6 +32,14 @@ public interface WxSupplierPromoterService {
    * @return
    */
   PromoterBindSharerResponse getBindSharerList(String nextKey, Integer pageSize, String sharerOpenid) throws WxErrorException;
+
+  /**
+   * 机构解绑推客
+   *
+   * @param sharerAppid 推客的appid
+   * @return
+   */
+  WxChannelBaseResponse headsupplierUnbindPromoter(String sharerAppid) throws WxErrorException;
 
   /**
    * 获取合作的小店列表
@@ -149,5 +159,40 @@ public interface WxSupplierPromoterService {
    * @return
    */
   PromoterOrderDetailResponse getOrderDetail(String orderId, String skuId) throws WxErrorException;
+
+  /**
+   * 获取合作的带货者列表
+   *
+   * @param nextKey
+   * @param pageSize
+   * @param talentAppid 查询某个合作的带货者 appid
+   * @return
+   * @throws WxErrorException
+   */
+  PromoterBindTalentResponse getBindTalentList(String nextKey, Integer pageSize, String talentAppid) throws WxErrorException;
+
+  /**
+   * 获取带货者推广的短视频信息
+   *
+   * @param nextKey
+   * @param pageSize
+   * @param talentAppid          合作的带货者id
+   * @param finderExportUsername 带货者的视频号username。 当合作方式是“全部内容合作”时，需要指定视频号username，如果是之前的“部分内容”的合作方式，则可以不填
+   * @return
+   * @throws WxErrorException
+   */
+  PromoterFeedListResponse getFeedList(String nextKey, Integer pageSize, String talentAppid, String finderExportUsername) throws WxErrorException;
+
+  /**
+   * 生成某个带货者的某些短视频内嵌短视频卡片需要的feedtoken
+   *
+   * @param feedList         需要生成 token 的短视频列表信息
+   * @param miniProgramAppid 需要挂在的小程序 appid【需要和机构绑定】
+   * @param talentAppid      带货者的 appid
+   * @param sharerAppid      推客appid【为了生成某个推客推广的 link】
+   * @return
+   * @throws WxErrorException
+   */
+  PromoterFeedInfoResponse getFeedPromotionInfo(List<String> feedList, String miniProgramAppid, String talentAppid, String sharerAppid) throws WxErrorException;
 
 }
