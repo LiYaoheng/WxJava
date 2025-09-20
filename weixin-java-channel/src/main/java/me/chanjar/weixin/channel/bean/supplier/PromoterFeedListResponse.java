@@ -54,7 +54,7 @@ public class PromoterFeedListResponse extends WxChannelBaseResponse {
      * 预期机构结算金额【单位：分
      */
     @JsonProperty("predict_commission_amount")
-    private String predictCommissionAmount;
+    private Long predictCommissionAmount;
 
     /**
      * 所属的带货者 id
