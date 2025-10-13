@@ -76,7 +76,7 @@ public class PromoterPromoteProductDetailResponse extends WxChannelBaseResponse 
      * 供货机构信息
      */
     @JsonProperty("head_supplier_info")
-    private Object head_supplier_info;
+    private HeadSupplierInfo head_supplier_info;
 
   }
 
@@ -160,6 +160,18 @@ public class PromoterPromoteProductDetailResponse extends WxChannelBaseResponse 
 
     @JsonProperty("end_time")
     private Long end_time;
+
+  }
+
+  @Data
+  @NoArgsConstructor
+  public static class HeadSupplierInfo implements Serializable {
+
+    @JsonProperty("head_supplier_appid")
+    private String head_supplier_appid;
+
+    @JsonProperty("name")
+    private String name;
 
   }
 
