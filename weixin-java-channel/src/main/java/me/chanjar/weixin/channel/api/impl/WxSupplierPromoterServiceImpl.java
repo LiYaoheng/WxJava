@@ -214,4 +214,12 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
     String resJson = shopService.post(GET_FEED_PROMOTION_INFO_URL, reqJson);
     return ResponseUtils.decode(resJson, PromoterFeedInfoResponse.class);
   }
+
+  @Override
+  public PromoterItemDetailResponse getFeedPromotionInfo1(String headSupplierItemLink) throws WxErrorException {
+    JsonObject reqJson = new JsonObject();
+    reqJson.addProperty("head_supplier_item_link", headSupplierItemLink);
+    String resJson = shopService.post(GET_ITEM_PROMOTION_DETAIL, reqJson);
+    return ResponseUtils.decode(resJson, PromoterItemDetailResponse.class);
+  }
 }

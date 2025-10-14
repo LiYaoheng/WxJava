@@ -195,4 +195,13 @@ public interface WxSupplierPromoterService {
    */
   PromoterFeedInfoResponse getFeedPromotionInfo(List<String> feedList, String miniProgramAppid, String talentAppid, String sharerAppid) throws WxErrorException;
 
+  /**
+   * 获取商品推广参数详情
+   *
+   * @param headSupplierItemLink
+   * @return
+   * @throws WxErrorException
+   */
+  PromoterItemDetailResponse getFeedPromotionInfo1(String headSupplierItemLink) throws WxErrorException;
+
 }
