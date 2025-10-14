@@ -202,6 +202,6 @@ public interface WxSupplierPromoterService {
    * @return
    * @throws WxErrorException
    */
-  PromoterItemDetailResponse getFeedPromotionInfo1(String headSupplierItemLink) throws WxErrorException;
+  PromoterItemDetailResponse getItemPromotionDetail(String headSupplierItemLink) throws WxErrorException;
 
 }
