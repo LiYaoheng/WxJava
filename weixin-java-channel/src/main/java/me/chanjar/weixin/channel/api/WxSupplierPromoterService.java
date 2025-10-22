@@ -204,4 +204,10 @@ public interface WxSupplierPromoterService {
    */
   PromoterItemDetailResponse getItemPromotionDetail(String headSupplierItemLink) throws WxErrorException;
 
+  ShopPromoterResponse getBindShopPromoterList(String nextKey, Integer pageSize, String shop_appid) throws WxErrorException;
+
+  PromoterFeedListResponse getShopFeedList(String nextKey, Integer pageSize, String shop_appid, String promoter_id) throws WxErrorException;
+
+  PromoterFeedInfoResponse getShopFeedPromotionInfo(List<String> feedList, String miniProgramAppid, String shopAppid, String promoterId, String sharerAppid) throws WxErrorException;
+
 }

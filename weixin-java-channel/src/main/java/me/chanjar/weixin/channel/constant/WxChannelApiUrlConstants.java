@@ -1059,5 +1059,11 @@ public class WxChannelApiUrlConstants {
      */
     String GET_ITEM_PROMOTION_DETAIL_URL = "https://api.weixin.qq.com/channels/ec/league/headsupplier/item/promotiondetail/get";
 
+    String GET_BIND_SHOP_PROMOTER_LIST = "https://api.weixin.qq.com/channels/ec/promoter/get_bind_shop_promoter_list";
+
+    String GET_SHOP_FEED_LIST = "https://api.weixin.qq.com/channels/ec/promoter/get_shop_feed_list";
+
+    String GET_SHOP_FEED_PROMOTION_INFO = "https://api.weixin.qq.com/channels/ec/promoter/get_shop_feed_promotion_info";
+
   }
 }

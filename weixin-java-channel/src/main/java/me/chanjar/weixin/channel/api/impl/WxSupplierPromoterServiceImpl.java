@@ -223,4 +223,44 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
     String resJson = shopService.post(GET_ITEM_PROMOTION_DETAIL_URL, reqJson);
     return ResponseUtils.decode(resJson, PromoterItemDetailResponse.class);
   }
+
+  @Override
+  public ShopPromoterResponse getBindShopPromoterList(String nextKey, Integer pageSize, String shop_appid) throws WxErrorException {
+    JsonObject reqJson = new JsonObject();
+    reqJson.addProperty("next_key", nextKey);
+    reqJson.addProperty("page_size", pageSize);
+    reqJson.addProperty("shop_appid", shop_appid);
+    String resJson = shopService.post(GET_BIND_SHOP_PROMOTER_LIST, reqJson);
+    return ResponseUtils.decode(resJson, ShopPromoterResponse.class);
+  }
+
+  @Override
+  public PromoterFeedListResponse getShopFeedList(String nextKey, Integer pageSize, String shop_appid, String promoter_id) throws WxErrorException {
+    JsonObject reqJson = new JsonObject();
+    reqJson.addProperty("next_key", nextKey);
+    reqJson.addProperty("page_size", pageSize);
+    reqJson.addProperty("shop_appid", shop_appid);
+    reqJson.addProperty("promoter_id", promoter_id);
+    reqJson.addProperty("promoter_type", 1);
+    String resJson = shopService.post(GET_SHOP_FEED_LIST, reqJson);
+    return ResponseUtils.decode(resJson, PromoterFeedListResponse.class);
+  }
+
+  @Override
+  public PromoterFeedInfoResponse getShopFeedPromotionInfo(List<String> feedList, String miniProgramAppid, String shopAppid, String promoterId, String sharerAppid) throws WxErrorException {
+    JsonArray feedListJson = new JsonArray();
+    for (String exportId : feedList) {
+      JsonObject reqJson = new JsonObject();
+      reqJson.addProperty("export_id", exportId);
+      feedListJson.add(reqJson);
+    }
+    JsonObject reqJson = new JsonObject();
+    reqJson.add("feed_list", feedListJson);
+    reqJson.addProperty("mini_program_appid", miniProgramAppid);
+    reqJson.addProperty("shop_appid", shopAppid);
+    reqJson.addProperty("promoter_id", promoterId);
+    reqJson.addProperty("sharer_appid", sharerAppid);
+    String resJson = shopService.post(GET_SHOP_FEED_PROMOTION_INFO, reqJson);
+    return ResponseUtils.decode(resJson, PromoterFeedInfoResponse.class);
+  }
 }
