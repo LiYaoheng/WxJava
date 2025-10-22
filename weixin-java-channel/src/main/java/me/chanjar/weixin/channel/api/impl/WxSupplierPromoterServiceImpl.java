@@ -158,11 +158,12 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
   }
 
   @Override
-  public PromoterOrderListResponse getOrderList(Integer pageSize, String nextKey, String sharerAppid) throws WxErrorException {
+  public PromoterOrderListResponse getOrderList(Integer pageSize, String nextKey, String sharerAppid, String orderId) throws WxErrorException {
     JsonObject reqJson = new JsonObject();
     reqJson.addProperty("next_key", nextKey);
     reqJson.addProperty("page_size", pageSize);
     reqJson.addProperty("sharer_appid", sharerAppid);
+    reqJson.addProperty("order_id", orderId);
     String resJson = shopService.post(GET_ORDER_LIST_URL, reqJson);
     return ResponseUtils.decode(resJson, PromoterOrderListResponse.class);
   }

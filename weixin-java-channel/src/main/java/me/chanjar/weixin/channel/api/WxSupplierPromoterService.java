@@ -148,7 +148,7 @@ public interface WxSupplierPromoterService {
    * @param sharerAppid 用于查询推客，或者达人平台产生的订单数据
    * @return
    */
-  PromoterOrderListResponse getOrderList(Integer pageSize, String nextKey, String sharerAppid) throws WxErrorException;
+  PromoterOrderListResponse getOrderList(Integer pageSize, String nextKey, String sharerAppid, String orderId) throws WxErrorException;
 
   /**
    * 获取佣金单详情
