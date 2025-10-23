@@ -260,6 +260,7 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
     reqJson.addProperty("shop_appid", shopAppid);
     reqJson.addProperty("promoter_id", promoterId);
     reqJson.addProperty("sharer_appid", sharerAppid);
+    reqJson.addProperty("promoter_type", 1);
     String resJson = shopService.post(GET_SHOP_FEED_PROMOTION_INFO, reqJson);
     return ResponseUtils.decode(resJson, PromoterFeedInfoResponse.class);
   }
