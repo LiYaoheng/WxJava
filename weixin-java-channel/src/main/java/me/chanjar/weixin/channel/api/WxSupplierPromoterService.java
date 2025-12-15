@@ -210,4 +210,17 @@ public interface WxSupplierPromoterService {
 
   PromoterFeedInfoResponse getShopFeedPromotionInfo(List<String> feedList, String miniProgramAppid, String shopAppid, String promoterId, String sharerAppid) throws WxErrorException;
 
+  // 直播的商品
+  PromoterLiveProductListResponse getLiveCommissionProductList(String talent_appid, String next_key, String page_size) throws WxErrorException;
+
+  // 直播预约
+  PromoterLiveNoticeListResponse getLiveNoticeRecordList(String talent_appid) throws WxErrorException;
+
+  PromoterLiveQrcodeResponse getLiveNoticeRecordQrcode(String talent_appid, String notice_id, String sharer_appid) throws WxErrorException;
+
+  // 直播中的
+  PromoterLiveListResponse getLiveRecordList(String talent_appid, String mini_program_appid, String sharer_appid) throws WxErrorException;
+
+  PromoterLiveQrcodeResponse getLiveRecordQrcode(String talent_appid, String export_id, String sharer_appid) throws WxErrorException;
+
 }
