@@ -213,14 +213,24 @@ public interface WxSupplierPromoterService {
   // 直播的商品
   PromoterLiveProductListResponse getLiveCommissionProductList(String talent_appid, String next_key, String page_size) throws WxErrorException;
 
+  PromoterLiveProductListResponse getShopLiveCommissionProductList(String shop_appid, String promoter_id, Integer promoter_type, String next_key, String page_size) throws WxErrorException;
+
   // 直播预约
   PromoterLiveNoticeListResponse getLiveNoticeRecordList(String talent_appid) throws WxErrorException;
 
+  PromoterLiveNoticeListResponse getShopLiveNoticeRecordList(String shop_appid, String promoter_id, Integer promoter_type) throws WxErrorException;
+
   PromoterLiveQrcodeResponse getLiveNoticeRecordQrcode(String talent_appid, String notice_id, String sharer_appid) throws WxErrorException;
+
+  PromoterLiveQrcodeResponse getShopLiveNoticeRecordQrcode(String shop_appid, String promoter_id, Integer promoter_type, String notice_id, String sharer_appid) throws WxErrorException;
 
   // 直播中的
   PromoterLiveListResponse getLiveRecordList(String talent_appid, String mini_program_appid, String sharer_appid) throws WxErrorException;
 
+  PromoterLiveListResponse getShopLiveRecordList(String shop_appid, String promoter_id, Integer promoter_type, String mini_program_appid, String sharer_appid) throws WxErrorException;
+
   PromoterLiveQrcodeResponse getLiveRecordQrcode(String talent_appid, String export_id, String sharer_appid) throws WxErrorException;
+
+  PromoterLiveQrcodeResponse getShopLiveRecordQrcode(String shop_appid, String promoter_id, Integer promoter_type, String export_id, String sharer_appid) throws WxErrorException;
 
 }

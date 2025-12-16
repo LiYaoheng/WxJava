@@ -54,5 +54,8 @@ public class PromoterLiveProductListResponse extends WxChannelBaseResponse {
     @JsonProperty("predict_commission_amount")
     private Long predict_commission_amount;
 
+    @JsonProperty("commission_rate")
+    private Long commission_rate;
+
   }
 }

@@ -276,10 +276,32 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
   }
 
   @Override
+  public PromoterLiveProductListResponse getShopLiveCommissionProductList(String shop_appid, String promoter_id, Integer promoter_type, String next_key, String page_size) throws WxErrorException {
+    JsonObject reqJson = new JsonObject();
+    reqJson.addProperty("shop_appid", shop_appid);
+    reqJson.addProperty("promoter_id", promoter_id);
+    reqJson.addProperty("promoter_type", promoter_type);
+    reqJson.addProperty("next_key", next_key);
+    reqJson.addProperty("page_size", page_size);
+    String resJson = shopService.post("https://api.weixin.qq.com/channels/ec/promoter/get_shop_live_commission_product_list", reqJson);
+    return ResponseUtils.decode(resJson, PromoterLiveProductListResponse.class);
+  }
+
+  @Override
   public PromoterLiveNoticeListResponse getLiveNoticeRecordList(String talent_appid) throws WxErrorException {
     JsonObject reqJson = new JsonObject();
     reqJson.addProperty("talent_appid", talent_appid);
     String resJson = shopService.post("https://api.weixin.qq.com/channels/ec/promoter/get_live_notice_record_list", reqJson);
+    return ResponseUtils.decode(resJson, PromoterLiveNoticeListResponse.class);
+  }
+
+  @Override
+  public PromoterLiveNoticeListResponse getShopLiveNoticeRecordList(String shop_appid, String promoter_id, Integer promoter_type) throws WxErrorException {
+    JsonObject reqJson = new JsonObject();
+    reqJson.addProperty("shop_appid", shop_appid);
+    reqJson.addProperty("promoter_id", promoter_id);
+    reqJson.addProperty("promoter_type", promoter_type);
+    String resJson = shopService.post("https://api.weixin.qq.com/channels/ec/promoter/get_shop_live_notice_record_list", reqJson);
     return ResponseUtils.decode(resJson, PromoterLiveNoticeListResponse.class);
   }
 
@@ -294,12 +316,36 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
   }
 
   @Override
+  public PromoterLiveQrcodeResponse getShopLiveNoticeRecordQrcode(String shop_appid, String promoter_id, Integer promoter_type, String notice_id, String sharer_appid) throws WxErrorException {
+    JsonObject reqJson = new JsonObject();
+    reqJson.addProperty("shop_appid", shop_appid);
+    reqJson.addProperty("promoter_id", promoter_id);
+    reqJson.addProperty("promoter_type", promoter_type);
+    reqJson.addProperty("notice_id", notice_id);
+    reqJson.addProperty("sharer_appid", sharer_appid);
+    String resJson = shopService.post("https://api.weixin.qq.com/channels/ec/promoter/get_shop_live_notice_record_qr_code", reqJson);
+    return ResponseUtils.decode(resJson, PromoterLiveQrcodeResponse.class);
+  }
+
+  @Override
   public PromoterLiveListResponse getLiveRecordList(String talent_appid, String mini_program_appid, String sharer_appid) throws WxErrorException {
     JsonObject reqJson = new JsonObject();
     reqJson.addProperty("talent_appid", talent_appid);
     reqJson.addProperty("mini_program_appid", mini_program_appid);
     reqJson.addProperty("sharer_appid", sharer_appid);
     String resJson = shopService.post("https://api.weixin.qq.com/channels/ec/promoter/get_live_record_list", reqJson);
+    return ResponseUtils.decode(resJson, PromoterLiveListResponse.class);
+  }
+
+  @Override
+  public PromoterLiveListResponse getShopLiveRecordList(String shop_appid, String promoter_id, Integer promoter_type, String mini_program_appid, String sharer_appid) throws WxErrorException {
+    JsonObject reqJson = new JsonObject();
+    reqJson.addProperty("shop_appid", shop_appid);
+    reqJson.addProperty("promoter_id", promoter_id);
+    reqJson.addProperty("promoter_type", promoter_type);
+    reqJson.addProperty("mini_program_appid", mini_program_appid);
+    reqJson.addProperty("sharer_appid", sharer_appid);
+    String resJson = shopService.post("https://api.weixin.qq.com/channels/ec/promoter/get_shop_live_record_list", reqJson);
     return ResponseUtils.decode(resJson, PromoterLiveListResponse.class);
   }
 
@@ -312,4 +358,17 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
     String resJson = shopService.post("https://api.weixin.qq.com/channels/ec/promoter/get_live_record_qr_code", reqJson);
     return ResponseUtils.decode(resJson, PromoterLiveQrcodeResponse.class);
   }
+
+  @Override
+  public PromoterLiveQrcodeResponse getShopLiveRecordQrcode(String shop_appid, String promoter_id, Integer promoter_type, String export_id, String sharer_appid) throws WxErrorException {
+    JsonObject reqJson = new JsonObject();
+    reqJson.addProperty("shop_appid", shop_appid);
+    reqJson.addProperty("promoter_id", promoter_id);
+    reqJson.addProperty("promoter_type", promoter_type);
+    reqJson.addProperty("export_id", export_id);
+    reqJson.addProperty("sharer_appid", sharer_appid);
+    String resJson = shopService.post("https://api.weixin.qq.com/channels/ec/promoter/get_shop_live_record_qr_code", reqJson);
+    return ResponseUtils.decode(resJson, PromoterLiveQrcodeResponse.class);
+  }
+
 }
