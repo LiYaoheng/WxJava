@@ -233,4 +233,9 @@ public interface WxSupplierPromoterService {
 
   PromoterLiveQrcodeResponse getShopLiveRecordQrcode(String shop_appid, String promoter_id, Integer promoter_type, String export_id, String sharer_appid) throws WxErrorException;
 
+  // 直播预约的推广参数
+  PromoterLiveShareLinkResponse getLiveNoticePromoterShareLink(String mini_program_appid, String talent_appid, String notice_id, String sharer_appid) throws WxErrorException;
+
+  PromoterLiveShareLinkResponse getShopLiveNoticePromoterShareLink(String shop_appid, String promoter_id, Integer promoter_type, String notice_id, String sharer_appid) throws WxErrorException;
+
 }

@@ -371,4 +371,26 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
     return ResponseUtils.decode(resJson, PromoterLiveQrcodeResponse.class);
   }
 
+  @Override
+  public PromoterLiveShareLinkResponse getLiveNoticePromoterShareLink(String mini_program_appid, String talent_appid, String notice_id, String sharer_appid) throws WxErrorException {
+    JsonObject reqJson = new JsonObject();
+    reqJson.addProperty("mini_program_appid", mini_program_appid);
+    reqJson.addProperty("talent_appid", talent_appid);
+    reqJson.addProperty("notice_id", notice_id);
+    reqJson.addProperty("sharer_appid", sharer_appid);
+    String resJson = shopService.post("https://api.weixin.qq.com/channels/ec/promoter/get_shop_live_record_qr_code", reqJson);
+    return ResponseUtils.decode(resJson, PromoterLiveShareLinkResponse.class);
+  }
+
+  @Override
+  public PromoterLiveShareLinkResponse getShopLiveNoticePromoterShareLink(String shop_appid, String promoter_id, Integer promoter_type, String notice_id, String sharer_appid) throws WxErrorException {
+    JsonObject reqJson = new JsonObject();
+    reqJson.addProperty("shop_appid", shop_appid);
+    reqJson.addProperty("promoter_id", promoter_id);
+    reqJson.addProperty("promoter_type", promoter_type);
+    reqJson.addProperty("notice_id", notice_id);
+    reqJson.addProperty("sharer_appid", sharer_appid);
+    String resJson = shopService.post("https://api.weixin.qq.com/channels/ec/promoter/get_shop_live_notice_promoter_share_link", reqJson);
+    return ResponseUtils.decode(resJson, PromoterLiveShareLinkResponse.class);
+  }
 }
