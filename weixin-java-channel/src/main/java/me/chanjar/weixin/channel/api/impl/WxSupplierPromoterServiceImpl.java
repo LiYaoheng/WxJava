@@ -378,7 +378,7 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
     reqJson.addProperty("talent_appid", talent_appid);
     reqJson.addProperty("notice_id", notice_id);
     reqJson.addProperty("sharer_appid", sharer_appid);
-    String resJson = shopService.post("https://api.weixin.qq.com/channels/ec/promoter/get_shop_live_record_qr_code", reqJson);
+    String resJson = shopService.post("https://api.weixin.qq.com/channels/ec/promoter/get_live_notice_promoter_share_link", reqJson);
     return ResponseUtils.decode(resJson, PromoterLiveShareLinkResponse.class);
   }
 
