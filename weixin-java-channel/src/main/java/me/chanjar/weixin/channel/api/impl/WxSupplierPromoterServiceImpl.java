@@ -266,7 +266,7 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
   }
 
   @Override
-  public PromoterLiveProductListResponse getLiveCommissionProductList(String talent_appid, String next_key, String page_size) throws WxErrorException {
+  public PromoterLiveProductListResponse getLiveCommissionProductList(String talent_appid, String next_key, Integer page_size) throws WxErrorException {
     JsonObject reqJson = new JsonObject();
     reqJson.addProperty("talent_appid", talent_appid);
     reqJson.addProperty("next_key", next_key);
@@ -276,7 +276,7 @@ public class WxSupplierPromoterServiceImpl implements WxSupplierPromoterService 
   }
 
   @Override
-  public PromoterLiveProductListResponse getShopLiveCommissionProductList(String shop_appid, String promoter_id, Integer promoter_type, String next_key, String page_size) throws WxErrorException {
+  public PromoterLiveProductListResponse getShopLiveCommissionProductList(String shop_appid, String promoter_id, Integer promoter_type, String next_key, Integer page_size) throws WxErrorException {
     JsonObject reqJson = new JsonObject();
     reqJson.addProperty("shop_appid", shop_appid);
     reqJson.addProperty("promoter_id", promoter_id);

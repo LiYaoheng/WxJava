@@ -211,9 +211,9 @@ public interface WxSupplierPromoterService {
   PromoterFeedInfoResponse getShopFeedPromotionInfo(List<String> feedList, String miniProgramAppid, String shopAppid, String promoterId, String sharerAppid) throws WxErrorException;
 
   // 直播的商品
-  PromoterLiveProductListResponse getLiveCommissionProductList(String talent_appid, String next_key, String page_size) throws WxErrorException;
+  PromoterLiveProductListResponse getLiveCommissionProductList(String talent_appid, String next_key, Integer page_size) throws WxErrorException;
 
-  PromoterLiveProductListResponse getShopLiveCommissionProductList(String shop_appid, String promoter_id, Integer promoter_type, String next_key, String page_size) throws WxErrorException;
+  PromoterLiveProductListResponse getShopLiveCommissionProductList(String shop_appid, String promoter_id, Integer promoter_type, String next_key, Integer page_size) throws WxErrorException;
 
   // 直播预约
   PromoterLiveNoticeListResponse getLiveNoticeRecordList(String talent_appid) throws WxErrorException;
